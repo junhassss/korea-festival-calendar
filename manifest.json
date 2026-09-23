@@ -1,0 +1,11 @@
+{
+  "name": "전국축제달력",
+  "short_name": "축제달력",
+  "description": "대한민국 전국 축제를 날짜와 지역으로 빠르게 탐색하는 서비스",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#f97316",
+  "lang": "ko"
+}

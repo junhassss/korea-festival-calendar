@@ -1,0 +1,30 @@
+name: Update festival data (template)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 18,6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch and normalize public festival data
+        env:
+          TOUR_API_KEY: ${{ secrets.TOUR_API_KEY }}
+        run: node scripts/update-festivals.mjs
+      - name: Commit changed data only
+        run: |
+          git diff --quiet data/festivals.json && exit 0
+          git config user.name "festival-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/festivals.json
+          git commit -m "Update festival data"
+          git push
