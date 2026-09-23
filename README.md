@@ -116,3 +116,10 @@ Sponsored Festival, Local Ad, Affiliate, Radar Plus 플래그는 기본 `false`�
 3. 실제 오류 제보·광고 문의 endpoint
 4. PWA 아이콘 및 오프라인 데이터 정책 확정 후 installability 완성
 5. GA4 연결과 전환 Funnel 분석
+# V5 의사결정 흐름
+
+- 이번 주말 TOP 3와 오늘 추천은 `decision.js`의 공통 점수·추천 이유 엔진을 사용합니다.
+- 비교 후보는 `festival-compare`에 최대 3개, 확정 계획은 `festival-weekend-plan`에 현재 주말 키와 함께 저장합니다.
+- 찜은 관심 저장, 비교는 후보 검토, 주말 계획은 최종 선택으로 서로 독립적으로 동작합니다.
+- 지역·월별 랜딩은 실제 데이터가 충분해질 때 정적 페이지 생성기에 연결할 수 있도록 기존 `region`, `startDate` 스키마를 유지합니다.
+
